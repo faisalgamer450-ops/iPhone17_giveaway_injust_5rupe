@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Win iPhone 18 - Mega Giveaway</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #334155;
+        }
+        h1 { color: #38bdf8; font-size: 24px; margin-bottom: 10px; }
+        p { color: #94a3b8; font-size: 14px; margin-bottom: 20px; }
+        .price-tag {
+            font-size: 28px;
+            font-weight: bold;
+            color: #22c55e;
+            background: #064e3b;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            background: #0f172a;
+            border: 1px solid #475569;
+            color: #fff;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        button:hover { background: #1d4ed8; }
+        .qr-section {
+            margin-top: 20px;
+            display: none;
+        }
+        .qr-section img {
+            width: 200px;
+            height: 200px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>📱 Win iPhone 18</h1>
+        <p>Sirf ₹5 mein participate karein aur jeetein naya iPhone 18!</p>
+        
+        <div class="price-tag">Entry Fee: ₹5 Only</div>
+
+        <form id="entryForm" onsubmit="showPayment(event)">
+            <input type="text" id="name" placeholder="Aapka Naam (Full Name)" required>
+            <input type="tel" id="phone" placeholder="WhatsApp / UPI Mobile Number" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <button type="submit">Proceed to Pay ₹5</button>
+        </form>
+
+        <div class="qr-section" id="qrSection">
+            <p style="color: #facc15;">Step 2: Kisi bhi UPI App se ₹5 pay karein aur Transaction ID neeche dalein.</p>
+            <!-- Apni UPI QR Code ki image ka link yahan dalein -->
+            <img src="YOUR_UPI_QR_IMAGE_LINK_HERE" alt="UPI QR Code">
+            
+            <input type="text" id="txnId" placeholder="Enter UPI Transaction ID / UTR" required>
+            <button onclick="submitEntry()">Submit Entry & Complete</button>
+        </div>
+    </div>
+
+    <script>
+        function showPayment(event) {
+            event.preventDefault();
+            document.getElementById('entryForm').style.display = 'none';
+            document.getElementById('qrSection').style.display = 'block';
+        }
+
+        function submitEntry() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const txnId = document.getElementById('txnId').value;
+
+            if(!txnId) {
+                alert('Please enter Transaction ID!');
+                return;
+            }
+
+            // Data ko WhatsApp ya Google Sheets par bhejane ka logic yahan add ho sakta hai
+            alert('Thank you ' + name + '! Aapki entry verify hone par aapko confirmation message mil jayega.');
+            location.reload();
+        }
+    </script>
+</body>
+</html>
